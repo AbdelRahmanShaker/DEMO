@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>DEMO</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag "http://js.pusherapp.com/1.9/pusher.min.js", "application" %>
+  <%= csrf_meta_tags %>
+ <script type="text/javascript">
+    window.pusher_key = '<%= ENV['af30f81da233dd0925b2'] %>';
+  </script>
+        <link rel="stylesheet/less" type="text/css" href="lib/twitter-bootstrap/lib/bootstrap.less">
+    <script src="lib/less/less-1.1.5.min.js"></script> 
+    <link href="styles.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="lib/gritter/css/jquery.gritter.css" />  
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script> 
+    <script src="lib/gritter/js/jquery.gritter.js"></script> 
+    <script src="//js.pusher.com/2.2/pusher.min.js"></script> 
+    <script src="PusherNotifier.js"></script>
+    <script src="DEMO/src/PusherNotifier.js"></script>
+ 
+    <script>
+        Pusher.log = function(message) {
+      if (window.console && window.console.log) {
+        window.console.log(message);
+      }
+    };
+
+
+$(function() {
+  var pusher = new Pusher('af30f81da233dd0925b2');
+  var channel = pusher.subscribe('my_notifications');
+  var notifier = new PusherNotifier(channel);
+  channel.bind('my-event', function(data) {
+  alert('An event was triggered with message: ' + data.message);});
+
+});
+       
+    </script>
+</head>
+<body>
+
+<%= yield %>
+
+</body>
+</html>

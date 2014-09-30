@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DEMO</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag "http://js.pusherapp.com/1.9/pusher.min.js", "application" %>
+  <%= csrf_meta_tags %>
+ <script type="text/javascript">
+    window.pusher_key = '<%= ENV['PUSHER_KEY'] %>';
+  </script>
+</head>
+<body>
+
+<%= yield %>
+
+</body>
+</html>

@@ -1,0 +1,13 @@
+<h2> Notifications </h2>
+
+
+    <% @notifications.each do |n| %>
+      <tr>
+      	<h2>
+        <td><%= n.content %></td>
+        <td><%= link_to 'Destroy', n, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </h2>
+        
+      </tr>
+      <% end %>
+      <%= link_to 'back' , users_path %>
