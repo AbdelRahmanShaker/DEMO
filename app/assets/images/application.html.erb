@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DEMO</title>
+  <% $NUMBER_OF_THE_NOTIFICATIONS =0 %> 
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag "http://js.pusherapp.com/1.9/pusher.min.js", "application" %>
+  <%= csrf_meta_tags %>
+        <link rel="stylesheet/less" type="text/css" href="lib/twitter-bootstrap/lib/bootstrap.less">
+
+    
+
+    <link rel="stylesheet/css" type="text/css" href="/assests/jquery.gritter.css" />  
+
+    <script type="text/javascript" src="/assets/jquery.gritter.min.js" ></script>
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+      <button class="btn info">Notify</button>
+
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script> 
+    <script src="//js.pusher.com/2.2/pusher.min.js"></script> 
+    <script type = "text/javascript" src="/assets/PusherNotifier.js"></script>
+
+  <script> 
+      var NOTIFY_ENDPOINT = '/assets/notify.html';
+     
+    
+      $(function() {
+        $("a[href='#notify']").click(function() {
+          $.ajax({
+            url: NOTIFY_ENDPOINT,
+            data: {"message": "I'm a notification!"}
+          });
+        });
+          
+        $(".notify button").click(handleNotifyButtonClick);
+        
+         var pusher = new Pusher('af30f81da233dd0925b2', {encrypted: true});
+
+        var channel = pusher.subscribe('my_notifications');
+        var notifier = new PusherNotifier(channel);
+      });
+      
+      function handleNotifyButtonClick() {
+        var message = "hello world"
+        if(message) {
+          $.ajax({
+            url: NOTIFY_ENDPOINT,
+            data: {"message": message}
+          });
+        }
+      }
+
+    </script>
+</head>
+<body>
+
+<%= yield %>
+
+</body>
+</html>
