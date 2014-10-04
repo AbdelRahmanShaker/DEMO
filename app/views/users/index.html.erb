@@ -9,8 +9,10 @@
       <th colspan="3"></th>
     </tr>
   </thead>
+ 
+
   <p> Number of notification 
-<%= link_to Notification.count , notifications_path %> </p>
+<%= link_to $NUMBER_OF_THE_NOTIFICATIONS , notifications_path %> </p>
   <tbody>
     <% @users.each do |user| %>
       <tr>

@@ -1,6 +1,6 @@
 <h2> Notifications </h2>
 
-
+	<% $N = 0 %>
     <% @notifications.each do |n| %>
       <tr>
       	<h2>
@@ -10,4 +10,5 @@
         
       </tr>
       <% end %>
+      <%= $NUMBER_OF_THE_NOTIFICATIONS = 0%>
       <%= link_to 'back' , users_path %>

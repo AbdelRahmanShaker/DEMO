@@ -1,3 +1,8 @@
+src="lib/gritter/js/jquery.gritter.js" 
+src="js.pusher.com/2.2/pusher.min.js"
+
+
+    
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
@@ -14,6 +19,4 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-window.pusher = new Pusher(window.pusher_key);
-window.broadcast_channel = pusher.subscribe('broadcast');
 
